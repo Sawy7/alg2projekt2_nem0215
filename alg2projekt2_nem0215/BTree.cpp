@@ -103,7 +103,7 @@ int BTree::GetTreeHeight()
 	return this->GetTreeHeight(this->root, 0);
 }
 
-/// Metoda, ktera umoznuje zadavat klice k pridani primo z command line
+/// Metoda, ktera umoznuje zadavat klice k pridani a odebrani primo z command line
 void BTree::InsertInteractive()
 {
 	while (true)

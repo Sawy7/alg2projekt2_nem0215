@@ -30,7 +30,7 @@ void TreePage::InsertKey(int value)
 				break;
 			}
 		}
-		if (this->ChildPages[placeHere]->n == maxKeys) //lastfix
+		if (this->ChildPages[placeHere]->n == maxKeys)
 		{
 			this->SplitChild(placeHere, this->ChildPages[placeHere]);
 			//cout << "v: " << value << "key: " << this->keys[placeHere] << endl;
@@ -47,6 +47,10 @@ void TreePage::InsertKey(int value)
 				for (int i = 0; i < this->ChildPages[placeHere + 1]->n - 1; i++)
 				{
 					this->ChildPages[placeHere + 1]->keys[i] = this->ChildPages[placeHere + 1]->keys[i + 1];
+				}
+				for (int i = 0; i < this->ChildPages[placeHere + 1]->n; i++)
+				{
+					this->ChildPages[placeHere + 1]->ChildPages[i] = this->ChildPages[placeHere + 1]->ChildPages[i + 1];
 				}
 				this->ChildPages[placeHere + 1]->n--;
 			}
