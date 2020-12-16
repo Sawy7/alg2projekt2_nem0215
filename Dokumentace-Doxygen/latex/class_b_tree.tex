@@ -1,0 +1,145 @@
+\hypertarget{class_b_tree}{}\doxysection{B\+Tree Class Reference}
+\label{class_b_tree}\index{BTree@{BTree}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_b_tree_a7cf2037d15caacd95e1569246df32291}\label{class_b_tree_a7cf2037d15caacd95e1569246df32291}} 
+\mbox{\hyperlink{class_b_tree_a7cf2037d15caacd95e1569246df32291}{B\+Tree}} (int o)
+\begin{DoxyCompactList}\small\item\em Konstruktor tridy \mbox{\hyperlink{class_b_tree}{B\+Tree}} -\/ vytvari prazdny strom dle zadaneho radu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_tree_af543c9e06108a16ed505afb8eefacd20}{Insert}} (int value)
+\begin{DoxyCompactList}\small\item\em Metoda, kterou volame, kdyz chceme pridat klic do stromu; podstatna cast reseni cerpa z\+: \href{https://www.geeksforgeeks.org/insert-operation-in-b-tree/}{\texttt{ https\+://www.\+geeksforgeeks.\+org/insert-\/operation-\/in-\/b-\/tree/}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_b_tree_af0b86a2c075cc6d78a70adc39633369f}\label{class_b_tree_af0b86a2c075cc6d78a70adc39633369f}} 
+void \mbox{\hyperlink{class_b_tree_af0b86a2c075cc6d78a70adc39633369f}{Print\+Tree}} ()
+\begin{DoxyCompactList}\small\item\em Metoda pro volani z mainu -\/ spousti jednoduchou vizualizaci stromu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_b_tree_a6306b2199c79ddc8450faadba6e42fe4}\label{class_b_tree_a6306b2199c79ddc8450faadba6e42fe4}} 
+int \mbox{\hyperlink{class_b_tree_a6306b2199c79ddc8450faadba6e42fe4}{Count\+Keys}} ()
+\begin{DoxyCompactList}\small\item\em Metoda volajici jinou, ktera poskytne pocet klicu stromu -\/ hlavne pro vyuziti v mainu bez parametru. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_b_tree_af17cdc8770ca735fa891edfe57226fe7}\label{class_b_tree_af17cdc8770ca735fa891edfe57226fe7}} 
+void \mbox{\hyperlink{class_b_tree_af17cdc8770ca735fa891edfe57226fe7}{Find\+Key}} (int value)
+\begin{DoxyCompactList}\small\item\em Tato metoda vola dalsi metodu, ktera poskytne informaci o nalezeni/nenalezeni klice ve stromu -\/ hlavne pro vyuziti v mainu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_tree_a232d4501e860c92d736908484a25d00c}{Remove}} (int value, bool only\+Rebalance)
+\begin{DoxyCompactList}\small\item\em Metoda, ktera odstrani zvoleny klic ze stromu a provede veskerou dalsi cinnost, ktera zaruci, ze je strom po tomto zakroku spravne rozlozen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_b_tree_af77045a01c410872840898f77e875721}\label{class_b_tree_af77045a01c410872840898f77e875721}} 
+void \mbox{\hyperlink{class_b_tree_af77045a01c410872840898f77e875721}{P\+T\+I\+MP}} ()
+\begin{DoxyCompactList}\small\item\em Soucast komplexnejsiho, ale zato mnohem hezciho a prehlednejsiho vizualniho zobrazeni stromu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_b_tree_a39724d8ab5f0b513dd1a91a34ade5c15}\label{class_b_tree_a39724d8ab5f0b513dd1a91a34ade5c15}} 
+int \mbox{\hyperlink{class_b_tree_a39724d8ab5f0b513dd1a91a34ade5c15}{Get\+Tree\+Height}} ()
+\begin{DoxyCompactList}\small\item\em Metoda pro volani z mainu -\/ spousti funkci, ktera vrati vysku celeho stromu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_b_tree_a59387a97335f6f8ca30cb589630f9ce9}\label{class_b_tree_a59387a97335f6f8ca30cb589630f9ce9}} 
+void \mbox{\hyperlink{class_b_tree_a59387a97335f6f8ca30cb589630f9ce9}{Insert\+Interactive}} ()
+\begin{DoxyCompactList}\small\item\em Metoda, ktera umoznuje zadavat klice k pridani a odebrani primo z command line. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_b_tree_a1d0dbad21ec825a7c8e5625709010e6c}\label{class_b_tree_a1d0dbad21ec825a7c8e5625709010e6c}} 
+\mbox{\hyperlink{class_b_tree_a1d0dbad21ec825a7c8e5625709010e6c}{$\sim$\+B\+Tree}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor -\/ uplne jednoduchy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_b_tree_af543c9e06108a16ed505afb8eefacd20}\label{class_b_tree_af543c9e06108a16ed505afb8eefacd20}} 
+\index{BTree@{BTree}!Insert@{Insert}}
+\index{Insert@{Insert}!BTree@{BTree}}
+\doxysubsubsection{\texorpdfstring{Insert()}{Insert()}}
+{\footnotesize\ttfamily void B\+Tree\+::\+Insert (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Metoda, kterou volame, kdyz chceme pridat klic do stromu; podstatna cast reseni cerpa z\+: \href{https://www.geeksforgeeks.org/insert-operation-in-b-tree/}{\texttt{ https\+://www.\+geeksforgeeks.\+org/insert-\/operation-\/in-\/b-\/tree/}}. 
+
+Zjistuje, jestli existuje korenova stranka
+
+Zjistuje, jestli se klic uz ve strome nachazi
+
+Zjistuje, jestli se klic uz ve strome nachazi
+
+Kdyz je korenova stranka plna
+
+Rozdeleni puvodniho korenu
+
+Pokud je novy klic mensi nez klic v novem koreni, pak bude pridan do leveho potomka
+
+Nejvetsi klic z leveho potomka vyplave do korene
+
+Nejmensi klic z praveho potomka vyplave do korene a ostatni klice a potomci se shiftnou doleva
+
+Konecne nahrazujeme puvodni koren novym
+
+Pokud neni korenova stranka plna, proste vlozime klic
+
+Upozorneni a vizualizace\mbox{\Hypertarget{class_b_tree_a232d4501e860c92d736908484a25d00c}\label{class_b_tree_a232d4501e860c92d736908484a25d00c}} 
+\index{BTree@{BTree}!Remove@{Remove}}
+\index{Remove@{Remove}!BTree@{BTree}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}}
+{\footnotesize\ttfamily void B\+Tree\+::\+Remove (\begin{DoxyParamCaption}\item[{int}]{value,  }\item[{bool}]{only\+Rebalance }\end{DoxyParamCaption})}
+
+
+
+Metoda, ktera odstrani zvoleny klic ze stromu a provede veskerou dalsi cinnost, ktera zaruci, ze je strom po tomto zakroku spravne rozlozen. 
+
+Hledani rodicovske stranky
+
+Urcovani stranky s klicem, ktery chceme smazat
+
+Nalezeni indexu, na kterem se nachazi p v potomcich rodice
+
+Pokud je klic v rodicovske strance, tak nastavime p jako rodice
+
+Nastaveni p stejne jako rodice
+
+Nastaveni p, pokud je jine nez rodic
+
+Nastaveni sourozence vlevo, pokud ten \char`\"{}vetsi\char`\"{} neexistuje
+
+Nastaveni sourozence vpravo
+
+Pokud je stranka list nebo jenom vyvazujeme strom
+
+\DoxyHorRuler{0}
+
+
+Sourozenec ma vice klicu, nez kolikateho je strom radu
+
+Kdyz je sourozenec vpravo
+
+Presunuti child\+Page ze sourozence
+
+Kdyz je sourozenec vlevo
+
+Presunuti child\+Page ze sourozence T\+BD
+
+Kdyz ma sourozenec presne tolik klicu, kolikateho je strom radu
+
+Kdyz je sourozenec vpravo
+
+Kdyz je sourozenec vlevo
+
+Pridani klice z rodicovske stranky
+
+Tento loop prenese vsechny potomky ze sourozence
+
+Presunuti vsech klicu ze sourozence
+
+Pokud stranka neni list
+
+Nalezeni nejblizsiho vetsiho klice
+
+Transformace na problem odstraneni klice v listu
+
+Nahrazeni puvodniho klice ve vnitrni strance
+
+Pokud rodicovska stranka neni zaroven korenem stromu a obsahuje mene klicu, nez kolikateho je strom radu a zaroven se nejedna pouze o transformovany problem odstraneni klice v listu
+
+Dochazi k preusporadani
+
+Pokud nema koren zadne klice
+
+Je za koren prohlasen \textquotesingle{}p\textquotesingle{}
+
+Je za koren prohlasen \textquotesingle{}s\textquotesingle{}
+
+Upozorneni v pripade mazani neexistujiciho klice
+
+Vypis statistiky o mazani
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+B\+Tree.\+h\item 
+B\+Tree.\+cpp\end{DoxyCompactItemize}

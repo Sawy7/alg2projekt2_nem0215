@@ -1,0 +1,58 @@
+\hypertarget{class_tree_page}{}\doxysection{Tree\+Page Class Reference}
+\label{class_tree_page}\index{TreePage@{TreePage}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tree_page_a84f6feb4d4864025a8fbfc3c2b7b6ca1}\label{class_tree_page_a84f6feb4d4864025a8fbfc3c2b7b6ca1}} 
+\mbox{\hyperlink{class_tree_page_a84f6feb4d4864025a8fbfc3c2b7b6ca1}{Tree\+Page}} (int o, bool l)
+\begin{DoxyCompactList}\small\item\em Konstruktor tridy \mbox{\hyperlink{class_tree_page}{Tree\+Page}} -\/ vytvari prazdny list dle zadaneho radu. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_page_a3747574a83e46c3907825ed5b0409e7e}\label{class_tree_page_a3747574a83e46c3907825ed5b0409e7e}} 
+void \mbox{\hyperlink{class_tree_page_a3747574a83e46c3907825ed5b0409e7e}{Insert\+Key}} (int value)
+\begin{DoxyCompactList}\small\item\em Metoda, ktera vlozi klic do konkretni stranky; podobne jako zbytek \char`\"{}insert chainu\char`\"{} inspirace odsud\+: \href{https://www.geeksforgeeks.org/insert-operation-in-b-tree/}{\texttt{ https\+://www.\+geeksforgeeks.\+org/insert-\/operation-\/in-\/b-\/tree/}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_page_ab51b7b86d6e159f020ad432bc3d22be9}\label{class_tree_page_ab51b7b86d6e159f020ad432bc3d22be9}} 
+void \mbox{\hyperlink{class_tree_page_ab51b7b86d6e159f020ad432bc3d22be9}{Insert\+Unconditionally}} (int value)
+\begin{DoxyCompactList}\small\item\em Metoda, ktera vlozi klic do stranky bezpodminecne -\/ bez jakehokoliv rozhodovani ho tam proste \char`\"{}placne\char`\"{} (je nutno uzivat s rozumem, soucast jinych metod) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tree_page_a3ecc44848d8e646bb99e7a83ba5c1e51}{Split\+Child}} (int x, \mbox{\hyperlink{class_tree_page}{Tree\+Page}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Metoda, ktera rozdeli potomka konkretni stranky; reseni cerpa z\+: \href{https://www.geeksforgeeks.org/insert-operation-in-b-tree/}{\texttt{ https\+://www.\+geeksforgeeks.\+org/insert-\/operation-\/in-\/b-\/tree/}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_tree_page_a2ec9930a9ecb2b968aa5b8013ef24618}\label{class_tree_page_a2ec9930a9ecb2b968aa5b8013ef24618}} 
+\mbox{\hyperlink{class_tree_page_a2ec9930a9ecb2b968aa5b8013ef24618}{$\sim$\+Tree\+Page}} ()
+\begin{DoxyCompactList}\small\item\em Destruktor -\/ uplne jednoduchy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_tree_page_afe7ca3b05721d3baaafb993caf9d1bbc}\label{class_tree_page_afe7ca3b05721d3baaafb993caf9d1bbc}} 
+class {\bfseries B\+Tree}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_tree_page_a3ecc44848d8e646bb99e7a83ba5c1e51}\label{class_tree_page_a3ecc44848d8e646bb99e7a83ba5c1e51}} 
+\index{TreePage@{TreePage}!SplitChild@{SplitChild}}
+\index{SplitChild@{SplitChild}!TreePage@{TreePage}}
+\doxysubsubsection{\texorpdfstring{SplitChild()}{SplitChild()}}
+{\footnotesize\ttfamily void Tree\+Page\+::\+Split\+Child (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{\mbox{\hyperlink{class_tree_page}{Tree\+Page}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+Metoda, ktera rozdeli potomka konkretni stranky; reseni cerpa z\+: \href{https://www.geeksforgeeks.org/insert-operation-in-b-tree/}{\texttt{ https\+://www.\+geeksforgeeks.\+org/insert-\/operation-\/in-\/b-\/tree/}}. 
+
+Vytvoreni nove stranky
+
+Kopirovani klicu do nove stranky
+
+Kopirovani potomku do nove stranky
+
+Zmena poctu klicu v puvodnim potomkovi
+
+Posunuti potomku v rodici (odkud spoustime tuto metodu)
+
+Zarazeni nove stranky jako potomka rodice (odkud spoustime tuto metodu)
+
+Posunuti klicu v rodici (odkud spoustime tuto metodu)
+
+Pridani noveho klice do rodice (odkud spoustime tuto metodu) -\/ toto se bude menit pozdeji v pridavnem kodu v jinych metodach (preusporadani)
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Tree\+Page.\+h\item 
+Tree\+Page.\+cpp\end{DoxyCompactItemize}
