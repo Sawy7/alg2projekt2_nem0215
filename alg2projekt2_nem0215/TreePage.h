@@ -23,6 +23,8 @@ private:
 	TreePage** ChildPages;
 	/// Hodnota urcujici, jestli je dana stranka 
 	bool leaf;
+	/// Hodnota urcujici, jestli je dana stranka koren
+	bool root;
 
 	void SimpleRemove(int value);
 	friend class BTree;

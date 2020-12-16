@@ -16,6 +16,7 @@ void BTree::Insert(int value)
 	if (this->root == nullptr) /// Zjistuje, jestli existuje korenova stranka
 	{
 		this->root = new TreePage(this->order, true);
+		this->root->root = true;
 		this->root->InsertKey(value);
 	}
 	else
@@ -28,6 +29,8 @@ void BTree::Insert(int value)
 		if (this->root->n == maxKeys) /// Kdyz je korenova stranka plna
 		{
 			TreePage* newRoot = new TreePage(this->order, false);
+			newRoot->root = true;
+			this->root->root = false;
 
 			newRoot->ChildPages[0] = this->root;
 
@@ -62,10 +65,15 @@ void BTree::Insert(int value)
 			//this->PrintTree();
 		}
 	}
+	TreePage* testp = this->CheckKeyCount(this->root);
+	if (testp != nullptr && testp != this->root)
+	{
+		this->Remove(testp->keys[0], true);
+	}
 	/// Upozorneni a vizualizace
 	cout << "Vkladani klice " << value << ":" << endl;
 	this->PTIMP();
-	cout << endl;
+	cout << "Pocet klicu: " << this->CountKeys() << "\n\n";
 }
 
 /// Metoda pro volani z mainu - spousti jednoduchou vizualizaci stromu
@@ -229,11 +237,33 @@ int BTree::CharsOnLevel(int level, TreePage* tp)
 	return numOfChars;
 }
 
+TreePage* BTree::CheckKeyCount(TreePage* tp)
+{
+	if (tp->n < tp->minKeys && tp != this->root)
+	{
+		return tp;
+	}
+	if (tp->leaf == false)
+	{
+		TreePage* eval = nullptr;
+		for (int i = 0; i < tp->n + 1; i++)
+		{
+			eval = this->CheckKeyCount(tp->ChildPages[i]);
+			if (eval != nullptr)
+			{
+				return eval;
+			}			
+		}
+	}
+	return nullptr;
+}
+
 /// Metoda volajici jinou, ktera poskytne pocet klicu stromu - hlavne pro vyuziti v mainu bez parametru
 int BTree::CountKeys()
 {
 	if (this->root != nullptr)
 	{
+		this->keyCount = 0;
 		return this->CountKeys(this->root);
 	}
 	else
@@ -351,7 +381,7 @@ void BTree::Remove(int value, bool onlyRebalance)
 
 		if (p->leaf || onlyRebalance) /// Pokud je stranka list nebo jenom vyvazujeme strom
 		{
-			if (p->n > p->minKeys && !onlyRebalance) /// Stranka bude mit po odstraneni clena aspon tolik klicu, kolikateho je strom radu
+			if (p->n > p->minKeys && !onlyRebalance || p == this->root) /// --------------------------
 			{
 				p->SimpleRemove(value);
 			}

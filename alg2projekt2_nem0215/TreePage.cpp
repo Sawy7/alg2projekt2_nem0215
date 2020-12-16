@@ -10,6 +10,7 @@ TreePage::TreePage(int o, bool l)
 	this->n = 0;
 	this->keys = new int[this->maxKeys];
 	this->ChildPages = new TreePage * [this->maxKeys + 1];
+	this->root = false;
 }
 
 /// Metoda, ktera vlozi klic do konkretni stranky; podobne jako zbytek "insert chainu" inspirace odsud: https://www.geeksforgeeks.org/insert-operation-in-b-tree/
@@ -58,7 +59,7 @@ void TreePage::InsertKey(int value)
 		else
 		{
 			this->ChildPages[placeHere]->InsertKey(value);
-			//if (this->ChildPages[placeHere]->n > this->ChildPages[placeHere]->maxKeys)
+			///if (this->ChildPages[placeHere]->n > this->ChildPages[placeHere]->maxKeys)
 			//{
 			//	//cout << "help";
 			//	this->SplitChild(placeHere, this->ChildPages[placeHere]);
@@ -139,7 +140,7 @@ void TreePage::SplitChild(int x, TreePage* p)
 	}
 
 	/// Pridani noveho klice do rodice (odkud spoustime tuto metodu) - toto se bude menit pozdeji v pridavnem kodu v jinych metodach (preusporadani)
-	this->keys[x] = p->keys[this->minKeys];
+	this->keys[x] = p->keys[p->n]; // latest hotfix 16-12-2020
 	this->n++;
 }
 
