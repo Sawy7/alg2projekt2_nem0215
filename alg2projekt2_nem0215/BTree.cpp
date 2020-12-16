@@ -10,18 +10,64 @@ BTree::BTree(int o)
 	this->keyCount = 0;
 }
 
-/// Metoda, kterou volame, kdyz chceme pridat klic do stromu; podstatna cast reseni cerpa z: https://www.geeksforgeeks.org/insert-operation-in-b-tree/
-void BTree::Insert(int value)
+/// Metoda, ktera kontroluje, jestli je nutne rozkladat vsechny nadrazene stranky, nebo je mozne rovnou vlozit do listu
+TreePage* BTree::IsSplitNecessary(int value, TreePage* tp)
 {
-	if (this->root == nullptr) /// Zjistuje, jestli existuje korenova stranka
+	if (tp != nullptr)
 	{
-		this->root = new TreePage(this->order, true);
-		this->root->root = true;
-		this->root->InsertKey(value);
+		if (!tp->leaf)
+		{
+			int placeHere = tp->n;
+			for (int i = 0; i < tp->n; i++)
+			{
+				if (value < tp->keys[i])
+				{
+					placeHere = i;
+					break;
+				}
+			}
+			return this->IsSplitNecessary(value, tp->ChildPages[placeHere]);
+		}
+		else
+		{
+			if (tp->n == tp->maxKeys)
+			{
+				return nullptr;
+			}
+			else
+			{
+				return tp;
+			}
+		}
 	}
 	else
 	{
-		if (this->FindKey(value, this->root) != nullptr)
+		return nullptr;
+	}
+}
+
+/// Metoda, kterou volame, kdyz chceme pridat klic do stromu; podstatna cast reseni cerpa z: https://www.geeksforgeeks.org/insert-operation-in-b-tree/
+void BTree::Insert(int value)
+{
+	TreePage* unconditionalPass = IsSplitNecessary(value, this->root);
+	
+	if (this->root == nullptr) /// Zjistuje, jestli existuje korenova stranka
+	{
+		this->root = new TreePage(this->order, true);
+		this->root->InsertKey(value);
+	}
+	else if (unconditionalPass != nullptr)
+	{
+		if (this->FindKey(value, this->root) != nullptr) /// Zjistuje, jestli se klic uz ve strome nachazi
+		{
+			cout << "Klic " << value << " uz tady je." << endl;
+			return;
+		}
+		unconditionalPass->InsertUnconditionally(value);
+	}
+	else
+	{
+		if (this->FindKey(value, this->root) != nullptr) /// Zjistuje, jestli se klic uz ve strome nachazi
 		{
 			cout << "Klic " << value << " uz tady je." << endl;
 			return;
@@ -29,8 +75,6 @@ void BTree::Insert(int value)
 		if (this->root->n == maxKeys) /// Kdyz je korenova stranka plna
 		{
 			TreePage* newRoot = new TreePage(this->order, false);
-			newRoot->root = true;
-			this->root->root = false;
 
 			newRoot->ChildPages[0] = this->root;
 
@@ -40,6 +84,7 @@ void BTree::Insert(int value)
 			{
 				newRoot->ChildPages[0]->InsertKey(value);
 				newRoot->keys[0] = newRoot->ChildPages[0]->keys[newRoot->ChildPages[0]->n - 1]; /// Nejvetsi klic z leveho potomka vyplave do korene
+				newRoot->ChildPages[1]->ChildPages[0] = newRoot->ChildPages[0]->ChildPages[newRoot->ChildPages[0]->n];
 				newRoot->ChildPages[0]->n--;
 			}
 			else
@@ -64,11 +109,6 @@ void BTree::Insert(int value)
 			this->root->InsertKey(value); /// Pokud neni korenova stranka plna, proste vlozime klic
 			//this->PrintTree();
 		}
-	}
-	TreePage* testp = this->CheckKeyCount(this->root);
-	if (testp != nullptr && testp != this->root)
-	{
-		this->Remove(testp->keys[0], true);
 	}
 	/// Upozorneni a vizualizace
 	cout << "Vkladani klice " << value << ":" << endl;
@@ -235,27 +275,6 @@ int BTree::CharsOnLevel(int level, TreePage* tp)
 		}
 	}
 	return numOfChars;
-}
-
-TreePage* BTree::CheckKeyCount(TreePage* tp)
-{
-	if (tp->n < tp->minKeys && tp != this->root)
-	{
-		return tp;
-	}
-	if (tp->leaf == false)
-	{
-		TreePage* eval = nullptr;
-		for (int i = 0; i < tp->n + 1; i++)
-		{
-			eval = this->CheckKeyCount(tp->ChildPages[i]);
-			if (eval != nullptr)
-			{
-				return eval;
-			}			
-		}
-	}
-	return nullptr;
 }
 
 /// Metoda volajici jinou, ktera poskytne pocet klicu stromu - hlavne pro vyuziti v mainu bez parametru
@@ -472,13 +491,11 @@ void BTree::Remove(int value, bool onlyRebalance)
 			{
 				if (tmp->keys[i] == value)
 				{
-					tmp->keys[i] = closestGreater;
+					tmp->keys[i] = closestGreater; /// Nahrazeni puvodniho klice ve vnitrni strance
 					justReplacing = true;
 					break;
 				}
 			}
-
-			//p->keys[keyIndex] = closestGreater;
 		}
 
 		if (r != this->root && r->n < r->minKeys && !justReplacing) /// Pokud rodicovska stranka neni zaroven korenem stromu a obsahuje mene klicu, nez kolikateho je strom radu a zaroven se nejedna pouze o transformovany problem odstraneni klice v listu

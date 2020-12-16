@@ -36,6 +36,6 @@ private:
 	int GetTreeHeight(TreePage* tp, int height);
 	bool PTIMP(int level, TreePage* tp);
 	int CharsOnLevel(int level, TreePage* tp);
-	TreePage* CheckKeyCount(TreePage* tp);
+	TreePage* IsSplitNecessary(int value, TreePage* tp);
 };
 

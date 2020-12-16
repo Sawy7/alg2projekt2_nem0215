@@ -10,7 +10,6 @@ TreePage::TreePage(int o, bool l)
 	this->n = 0;
 	this->keys = new int[this->maxKeys];
 	this->ChildPages = new TreePage * [this->maxKeys + 1];
-	this->root = false;
 }
 
 /// Metoda, ktera vlozi klic do konkretni stranky; podobne jako zbytek "insert chainu" inspirace odsud: https://www.geeksforgeeks.org/insert-operation-in-b-tree/
@@ -34,11 +33,11 @@ void TreePage::InsertKey(int value)
 		if (this->ChildPages[placeHere]->n == maxKeys)
 		{
 			this->SplitChild(placeHere, this->ChildPages[placeHere]);
-			//cout << "v: " << value << "key: " << this->keys[placeHere] << endl;
 			if (value <= this->keys[placeHere])
 			{
 				this->ChildPages[placeHere]->InsertKey(value);
 				this->keys[placeHere] = this->ChildPages[placeHere]->keys[this->ChildPages[placeHere]->n - 1];
+				this->ChildPages[placeHere + 1]->ChildPages[0] = this->ChildPages[placeHere]->ChildPages[this->ChildPages[placeHere]->n]; //bruuuuuuuuh
 				this->ChildPages[placeHere]->n--;
 			}
 			else
@@ -59,11 +58,6 @@ void TreePage::InsertKey(int value)
 		else
 		{
 			this->ChildPages[placeHere]->InsertKey(value);
-			///if (this->ChildPages[placeHere]->n > this->ChildPages[placeHere]->maxKeys)
-			//{
-			//	//cout << "help";
-			//	this->SplitChild(placeHere, this->ChildPages[placeHere]);
-			//}
 		}
 	}
 }

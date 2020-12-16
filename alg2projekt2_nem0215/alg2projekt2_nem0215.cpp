@@ -9,8 +9,7 @@ int main()
 {
     BTree* stromek = new BTree(2);
     
-    //stromek->InsertInteractive();
-    // vkladani
+    // Vkladani pro kontrolu se studijnim materialem
     stromek->Insert(3);
     stromek->Insert(22);
     stromek->Insert(10);
@@ -36,77 +35,43 @@ int main()
     stromek->Insert(15);
     stromek->Insert(46);
     
-    stromek->Insert(100);
-    stromek->Insert(150);
-    stromek->Insert(140);
-    stromek->Insert(130);
-    stromek->Insert(125);
-    stromek->Insert(123);
-    stromek->Insert(69);
-
-    // mazani
-    //stromek->Remove(3,false);
-    //stromek->Remove(7,false);
-    //stromek->Remove(8,false);
-    //stromek->Remove(6,false);
-    //stromek->Remove(22,false);
-    //stromek->Remove(46,false);
-    //stromek->Remove(1,false);
-    //stromek->Remove(17,false);
-    //stromek->Remove(55,false);
-    //stromek->Remove(44,false);
-    //stromek->Remove(4,false);
-    //stromek->Remove(45,false);
-    //stromek->Remove(15,false);
-    //stromek->Remove(9,false);
-    //stromek->Remove(10,false);
-    //stromek->Remove(67,false);
-    //stromek->Remove(2,false);
-    //stromek->Remove(70,false);
-    //stromek->Remove(21,false);
-    //stromek->Remove(5,false);
-
-    
-    //stromek->Insert(1);
-    //stromek->Insert(45);
-    //stromek->Insert(78);
-    //stromek->Insert(457);
-    //stromek->Insert(412);
-    //stromek->Insert(124);
-    //stromek->Insert(784);
-    //stromek->Insert(21);
-    //stromek->Insert(22);
-    //stromek->Insert(36);
-    //stromek->Insert(89);
-    //stromek->Insert(23);
-    //stromek->Insert(2);
-    //stromek->Insert(3);
-    //stromek->Insert(4);
-    //stromek->Insert(90);
-    //stromek->Insert(91);
-    //stromek->Insert(93);
-    //stromek->Insert(420);
-    //stromek->Insert(421);
-    //stromek->Insert(422);
-    //stromek->Insert(413);
-    //stromek->Insert(414);
-    //stromek->Insert(92);
+    //stromek->Insert(100);
+    //stromek->Insert(150);
+    //stromek->Insert(140);
+    //stromek->Insert(130);
     //stromek->Insert(125);
-    //stromek->Insert(460);
-    //stromek->Insert(470);
-    //stromek->Insert(800);
-    //stromek->Insert(810);
+    //stromek->Insert(123);
+    //stromek->Insert(69);
 
-    /*for (int i = 100; i > 0; i--)
-    {
-        if (i == 9)
-        {
-            cout << "oh boi" << endl;
-        }
-        stromek->Insert(i);
-        cout << stromek->CountKeys() << endl;
-    }*/
-    stromek->InsertInteractive();
+    // Mazani pro kontrolu se studijnim materialem
+    stromek->Remove(3,false);
+    stromek->Remove(7,false);
+    stromek->Remove(8,false);
+    stromek->Remove(6,false);
+    stromek->Remove(22,false);
+    stromek->Remove(46,false);
+    stromek->Remove(1,false);
+    stromek->Remove(17,false);
+    stromek->Remove(55,false);
+    stromek->Remove(44,false);
+    stromek->Remove(4,false);
+    stromek->Remove(45,false);
+    stromek->Remove(15,false);
+    stromek->Remove(9,false);
+    stromek->Remove(10,false);
+    stromek->Remove(67,false);
+    stromek->Remove(2,false);
+    stromek->Remove(70,false);
+    stromek->Remove(21,false);
+    stromek->Remove(5,false);
+
+    //for (int i = 1; i <= 200; i++)
+    //{
+    //    stromek->Insert(i);
+    //}
+    
+    // Interaktivni mod
+    //stromek->InsertInteractive();
 
     delete stromek;
 
