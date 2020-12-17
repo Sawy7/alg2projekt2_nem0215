@@ -34,14 +34,6 @@ int main()
     stromek->Insert(12);
     stromek->Insert(15);
     stromek->Insert(46);
-    
-    //stromek->Insert(100);
-    //stromek->Insert(150);
-    //stromek->Insert(140);
-    //stromek->Insert(130);
-    //stromek->Insert(125);
-    //stromek->Insert(123);
-    //stromek->Insert(69);
 
     // Mazani pro kontrolu se studijnim materialem
     stromek->Remove(3,false);
@@ -65,8 +57,8 @@ int main()
     stromek->Remove(21,false);
     stromek->Remove(5,false);
 
-    for (int i = 1; i <= 25; i++)
-    //for (int i = 100; i > 0; i--)
+    //for (int i = 1; i <= 25; i++)
+    for (int i = 25; i > 0; i--)
     {
         //stromek->Insert(i);
     }

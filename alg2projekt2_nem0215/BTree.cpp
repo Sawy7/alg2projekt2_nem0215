@@ -531,7 +531,6 @@ void BTree::Remove(int value, bool onlyRebalance)
 	{
 		cout << "Mazani klice " << value << ":" << endl;
 		this->PTIMP();
-		cout << endl;
 		cout << "Pocet klicu: " << this->CountKeys() << "\n\n";
 	}
 }
