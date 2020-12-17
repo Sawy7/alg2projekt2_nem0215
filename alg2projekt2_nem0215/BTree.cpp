@@ -26,7 +26,15 @@ TreePage* BTree::IsSplitNecessary(int value, TreePage* tp)
 					break;
 				}
 			}
-			return this->IsSplitNecessary(value, tp->ChildPages[placeHere]);
+			TreePage* eval = this->IsSplitNecessary(value, tp->ChildPages[placeHere]);
+			if (eval == nullptr && tp->n < tp->maxKeys)
+			{
+				return tp;
+			}
+			else
+			{
+				return eval;
+			}
 		}
 		else
 		{
@@ -63,7 +71,7 @@ void BTree::Insert(int value)
 			cout << "Klic " << value << " uz tady je." << endl;
 			return;
 		}
-		unconditionalPass->InsertUnconditionally(value);
+		unconditionalPass->InsertKey(value);
 	}
 	else
 	{
@@ -107,7 +115,6 @@ void BTree::Insert(int value)
 		else
 		{
 			this->root->InsertKey(value); /// Pokud neni korenova stranka plna, proste vlozime klic
-			//this->PrintTree();
 		}
 	}
 	/// Upozorneni a vizualizace
@@ -525,6 +532,7 @@ void BTree::Remove(int value, bool onlyRebalance)
 		cout << "Mazani klice " << value << ":" << endl;
 		this->PTIMP();
 		cout << endl;
+		cout << "Pocet klicu: " << this->CountKeys() << "\n\n";
 	}
 }
 
@@ -532,6 +540,10 @@ void BTree::Remove(int value, bool onlyRebalance)
 TreePage* BTree::FindParentPage(int value, TreePage* p, TreePage* r)
 {
 	int lastSmallerIdx = 0;
+	if (p->n == 0 && p->keys[0] == value) /// Specialni edge case pro listy, ktere ztratily vsechny klice pri rozdelovani potomka
+	{
+		return r;
+	}
 	for (int i = 0; i < p->n; i++)
 	{
 		if (p->keys[i] < value)

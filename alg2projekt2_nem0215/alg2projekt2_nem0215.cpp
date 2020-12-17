@@ -65,13 +65,14 @@ int main()
     stromek->Remove(21,false);
     stromek->Remove(5,false);
 
-    //for (int i = 1; i <= 200; i++)
-    //{
-    //    stromek->Insert(i);
-    //}
+    for (int i = 1; i <= 25; i++)
+    //for (int i = 100; i > 0; i--)
+    {
+        //stromek->Insert(i);
+    }
     
     // Interaktivni mod
-    //stromek->InsertInteractive();
+    stromek->InsertInteractive();
 
     delete stromek;
 
